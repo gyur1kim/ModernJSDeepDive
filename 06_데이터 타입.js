@@ -51,7 +51,7 @@ console.log('----------');
 //null타입
 //변수에 값이 없다는 것을 의도적으로 명시하기 위함
 //이전에 할당되어 있던 값에 대한 참조를 명시적으로 제거하는 것을 의미
-//document.querySelector에서 요소를 찾지 못하면 에러가 아니라 null을 반환한다.
+//document.querySelector()에서 요소를 찾지 못하면 에러가 아니라 null을 반환한다.
 
 
 //심벌 타입
