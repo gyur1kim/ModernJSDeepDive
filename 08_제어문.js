@@ -61,4 +61,14 @@ for(var i=0; i<str.length; i++){
 }
 console.log("l의 인덱스는", idx, "입니다.");
 //위의 문과 같은 내용
-console.log("l의 인덱스는", str.indexOf('search'), "입니다.");
+console.log("l의 인덱스는", str.indexOf(search), "입니다.");
+console.log('---------');
+
+//continue
+//반복문의 코드 블록 실행을 현 시점에서 중단, 실행흐름을 이동시킨다. 코드 블록을 탈출하지는 않음
+var count = 0;
+for(var i=0; i<str.length; i++){
+    if(str[i] !== search) continue;     //아래 문장 실행하지 않음
+    count++;
+}
+console.log('hello world에 쓰인 l의 개수는', count, '개 입니다.');
