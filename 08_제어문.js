@@ -38,3 +38,27 @@ switch (month){
         ((year%4 === 0 && year%100 !== 0) || year%400 === 0)? day=29 : day=28;
 }
 console.log(`${year}년의 ${month}월은 ${day}일까지 있습니다.`);
+console.log('----------');
+
+
+//반복문
+//조건식의 평가 결과가 참인 경우 실행, 조건문이 거짓이 될때까지 반복된다.
+//for문 - 반복 횟수가 명확할 때 ex)배열이 끝날 때까지
+//while문 - 반복 횟수가 불명확할 때 ex)사용자가 stop을 누를 때까지
+//do while문 - 일단 코드블록을 한 번 실행 후 조건식을 평가한다
+
+//break
+//코드 블록을 탈출하기 위해 사용된다. (정확히는 레이블문, 반복문, switch문)    ->레이블문은 가독성을 떨어트리므로 웬만하면 사용하지 말자
+var str = 'hello world';
+var search = 'l';
+var idx = null;
+
+for(var i=0; i<str.length; i++){
+    if(str[i] === search){
+        idx = i;
+        break;
+    }
+}
+console.log("l의 인덱스는", idx, "입니다.");
+//위의 문과 같은 내용
+console.log("l의 인덱스는", str.indexOf('search'), "입니다.");
