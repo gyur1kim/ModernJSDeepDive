@@ -42,5 +42,50 @@ console.log(a, b);  //100 80
 => '변수는 **값을 갖는다'가 아니라 '변수는 객체를 참조한다'라고 표현
 
 어차피 변수에는 객체의 주소가 들어있으므로, 객체를 변경해도 변수에 들어있는 주소값(참조값)이 변하는 것은 아니다!!
-그래서 객체 타입은 변경 가능함 MUTABLE
+그래서 객체 타입은 변경 가능함, MUTABLE
+
+그럼 객체가 들은 변수를 다른 변수에 저장한다면...?
+여러 개의 식별자가 하나의 객체를 공유하게 된다!ㅜㅜ
  */
+
+/*
+얕은 복사와 깊은 복사로 생성된 객체는 원본과 다른 객체다.
+얕은 복사 : 객체는 다르지만, 객체에 중첩되어 있는 객체는 참조값을 복사하게 되고(같은 주소를 공유)(=>살짝만 복사해서 깊이 들어있는 객체까지 완벽하게 복사하지는 못함)
+깊은 복사 : 객체도 다르고, 객체에 중첩되어 있는 객체까지 모두 복사해서 '완전한 복사본'을 만든다.
+ */
+//얕은 복사
+//한 단계만 복사하는 것
+const o = {x : {y : 1}};
+const c1 = {...o};
+console.log(c1 === o);      //false
+console.log(c1.x === o.x);  //true, 객체에 중첩되어있는 객체는 참조값을 복사했기 때문
+
+//깊은 복사
+//객체에 중첩되어 있는 객체까지 모두 복사
+const _ = require('lodash');
+const c2 = _.cloneDeep(o);
+console.log(c2 === o);      //false
+console.log(c2.x === o.x);  //false
+
+
+//여러 개의 식별자가 하나의 객체를 공유한다는 것은?
+var person = {
+    name: 'kim'
+};
+var copy = person;      //얕은 복사, copy에는 객체가 아니라 객체의 참조값이 복사된다.
+console.log(copy === person);    //true
+copy.name = 'lee';
+copy.address = 'gwangmyeong';    //객체 내용 변경
+console.log(person);
+console.log(copy);              //같은 결과가 나온다
+
+
+//QUIZ!
+var person1 = {
+    name: 'lee'
+};
+var person2 = {
+    name: 'lee'
+};
+console.log(person1 === person2);           //false : 이 둘은 별개의 참조값을 가지는 객체임. 내용은 같지만, 다른 곳에 저장된 객체다.
+console.log(person1.name === person2.name); //true : 안의 내용은 평가식이다. 값은 둘 다 'lee'라는 원시값을 가진다.
