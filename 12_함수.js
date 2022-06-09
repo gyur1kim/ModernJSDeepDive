@@ -120,7 +120,33 @@ function 키워드 대신 화살표 => 를 사용해 간략하게 함수 표현 
 매개변수의 스코프(유효범위)는 함수 내부이다.
 
 인수 확인
-인수의 숫자 타입을 알기 어려우므로, 따로 throw문을 이용해 확인하곤 한다.
-인수가 전달되지 않은 경우, undefined가 아니라 기본값을 할당할 수 있다. 미리 매개변수에 써두면 된다.
+인수의 타입을 알기 어려우므로, 따로 throw문을 이용해 확인하곤 한다.
+인수가 전달되지 않은 경우, undefined가 기본적으로 할당된다. 하지만, 미리 매개변수에 써두면 undefined가 아닌 내가 의도한 값을 넣을 수 있다.
 
+함수의 반환 return
+함수의 호출은 반환값으로 평가된다. 함수 호출 표현식은 return 키워드가 반환한 표현식의 평가 결과, 즉 반환값으로 표현된다.
+return은 두 가지 역할을 한다
+1. 함수의 실행 중단
+2. return키워드 뒤의 표현식을 평가해 반환, 아무것도 없거나 return을 생략하면 undefinde가 반환된다.
  */
+
+//참조에 의한 전달과 외부 상태의 변경
+/*
+값에 의한 전달, 참조에 의한 전달이 함수 내부의 매개변수에서도 동일하게 작동한다.(값에 의한 호출, 참조에 의한 호출이라고도 함)
+ */
+
+function changeVal(primitive, obj){
+    primitive += 100;
+    obj.name = 'kim';
+}
+//외부 상태
+var num = 100;
+var person = {name: 'Lee'};
+
+console.log(num);
+console.log(person);
+
+changeVal(num, person);
+
+console.log(num);       //num(원시값)은 훼손되지 않음
+console.log(person);    //obj(객체)는 원본이 훼손된다.
